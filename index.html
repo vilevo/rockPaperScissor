@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Rock Paper Scissors</title>
+</head>
+<body>
+    
+    <script>
+        let score_user_final = 0
+        let score_end_user = 0
+        
+        function game()
+        {
+            function computerPlay(){
+                //the function which will return the selection of the computer
+
+                const choice = ["rock","paper","scissors"]
+
+                //number will return a number between 0 and 2
+                const number = Math.floor(Math.random() * 3);
+
+                //we use the value returned by number as an index to get the value of array choice 
+                const random_choice = choice[number]
+
+                return random_choice 
+            }
+
+            //we ask the user to make a choice
+            const playerSelection = prompt("Make your choice")
+            playerSelection.toLowerCase()
+
+            //initialization of the computer selection
+            const computerSelection = computerPlay()
+
+
+            function playRound(playerSelection, computerSelection) {
+
+                //we check the selection of the user and we compare it to the selection of the computer to see who win or loose the game
+                if (playerSelection == "paper") {
+                    if (computerSelection == "rock") {
+                        let reponse =  "You wine "+playerSelection+" beats "+computerSelection
+                         
+                        return reponse
+                    }else if(computerSelection == "scissors"){
+                        let reponse =  "You lose "+computerSelection+" beats "+playerSelection
+                        
+                        return reponse
+                    }else if(computerSelection == "paper"){
+                        let reponse =  "Equality "+computerSelection+" is same to "+playerSelection+"\n please try again"
+
+                        return reponse
+                    }
+
+                }
+
+                if (playerSelection == "rock") {
+                    if (computerSelection == "rock") {
+                        let reponse =  "Equality "+computerSelection+" is same to "+playerSelection+"\n please try again"
+
+                        return reponse
+                    }else if(computerSelection == "scissors"){
+                        let reponse =  "You wine "+playerSelection+" beats "+computerSelection
+                       
+                        return reponse
+                    
+                    }else if(computerSelection == "paper"){
+                        let reponse =  "You lose "+computerSelection+" beats "+playerSelection
+                        
+                        return reponse
+                    }
+
+                }
+
+                if (playerSelection == "scissors") {
+                    if (computerSelection == "rock") {
+                        let reponse =  "You lose "+computerSelection+" beats "+playerSelection
+                        
+                        return reponse
+                    }else if(computerSelection == "scissors"){
+                        let reponse =  "Equality "+computerSelection+" is same to "+playerSelection+"\n please try again"
+
+                        return reponse
+                    
+                    }else if(computerSelection == "paper"){
+                        let reponse =  "You wine "+playerSelection+" beats "+computerSelection
+            
+                        return reponse
+                    }
+
+                }
+            }
+
+            console.log(playRound(playerSelection, computerSelection))
+        }
+        //here, we repeat the game during the 5 rouds
+        let round = 5
+        let i = 0
+        do {
+            game() 
+            i++
+            if (i == 5) {
+                //we check if i equal to 5, which means that it is the end of the party
+                alert('The End')
+            }
+        } while (i<round);
+        
+        
+
+    </script>
+</body>
+</html>
